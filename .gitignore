@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+
+# Virtual environment
+.venv
+
+# Data: the DVM-CAR photos and tables (about 17 GB)
+data/
+
+# Trained models, features and results (written by the notebooks)
+models/
+*.pt
+
+# Local tooling
+.claude/
+.agents/
+.playwright-mcp/
+.DS_Store

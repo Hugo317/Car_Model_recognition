@@ -1,0 +1,13 @@
+# Car Spotter dashboard theme: Graphite & Green (dark), Space Grotesk. Same family as the Fair Car Price dashboard.
+[theme]
+base = "dark"
+primaryColor = "#1db954"
+backgroundColor = "#0c0c0e"
+secondaryBackgroundColor = "#161618"
+textColor = "#f2efe8"
+borderColor = "#2a2a2e"
+linkColor = "#1db954"
+font = "'Space Grotesk':https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap, sans-serif"
+chartCategoricalColors = ["#1db954", "#5a8fe0", "#e05a3a", "#e0a83a"]
+codeTextColor = "#f2efe8"
+codeBackgroundColor = "#2a2a2e"
