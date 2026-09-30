@@ -17,7 +17,7 @@ Each (make, model) pair scores P(make) × P(model | make): if the front photo sa
 
 ## What's in the app
 
-Run it with `.venv/bin/streamlit run dashboard/app.py`. Five pages:
+The dashboard's code lives in `dashboard.ipynb` (run it to write `dashboard/`), and the app starts with `.venv/bin/streamlit run dashboard/app.py`. Five pages:
 
 - **Home**: what the tool is for, in one screen.
 - **Data**: the two sets of photos, how they were cleaned, one car from all 8 angles, photos per make and per angle.
@@ -78,6 +78,7 @@ Makes with many look-alike models are the hardest. Audi, with 33 models, was at 
 | `car_model_predictor.ipynb` | Builds the all-angles photo index, extracts the features, trains the 33 car-model classifiers, tests the full pipeline |
 | `car_model_finetune.ipynb` | Fine-tunes the backbone for the makes under 90% per car and compares before and after |
 | `load_models.ipynb` | Loads the saved make models and predicts without retraining |
+| `dashboard.ipynb` | The whole dashboard: each cell writes one file of `dashboard/`, with what it does explained above it; the last cells check every page and start the app |
 
 Every long step saves its results to `models/` and is skipped when they already exist, so re-running a notebook doesn't retrain anything.
 
