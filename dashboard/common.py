@@ -11,8 +11,11 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-MODELS_DIR = Path("models")
-DATA_DIR = Path("data")
+# Locally the notebooks write to models/ and data/. The hosted app has neither (3.8 GB and 17 GB), so it reads the small
+# copies in app_data/ (made by scripts/make_app_data.py).
+APP_DATA = Path(__file__).resolve().parent.parent / "app_data"
+MODELS_DIR = Path("models") if (Path("models") / "test_predictions.csv").exists() else APP_DATA / "models"
+DATA_DIR = Path("data") if (Path("data") / "resized_DVM").exists() else APP_DATA / "data"
 
 # palette: Graphite & Green (dark), same family as the Fair Car Price dashboard with green for gold
 BG = "#0c0c0e"        # page

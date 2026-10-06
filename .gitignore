@@ -6,10 +6,11 @@ __pycache__/
 .venv
 
 # Data: the DVM-CAR photos and tables (about 17 GB)
-data/
+/data/
 
 # Trained models, features and results (written by the notebooks)
-models/
+/models/
+models_onnx/
 *.pt
 
 # Local tooling

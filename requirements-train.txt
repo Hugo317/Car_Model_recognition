@@ -1,0 +1,13 @@
+# Python 3.12. TensorFlow stays at 2.18: tensorflow-metal 1.2.0 (Mac GPU) crashes with newer versions.
+tensorflow==2.18.1
+tensorflow-metal==1.2.0; sys_platform == "darwin" and platform_machine == "arm64"
+keras==3.15.1
+numpy==2.0.2
+pandas==3.0.6
+matplotlib==3.11.2
+pillow==12.3.0
+ultralytics==8.4.123
+torch==2.14.0
+streamlit==1.64.0
+plotly==7.1.0
+ipykernel==7.3.0

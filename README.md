@@ -103,3 +103,13 @@ Download DVM-CAR into `data/` (`confirmed_fronts/`, `resized_DVM/` and the table
 ```bash
 .venv/bin/streamlit run dashboard/app.py
 ```
+
+## Hosted version
+
+The live app runs on Streamlit Community Cloud, which has under 1 GB of memory for most apps, so it can't hold TensorFlow and PyTorch. It uses a lighter copy of the same models:
+
+- **ONNX Runtime instead of TensorFlow and PyTorch.** `scripts/convert_to_onnx.py` converts the make model, the six fine-tuned models and YOLO to ONNX, and the 33 car-model classifiers to plain NumPy weights. The converted models give the same answers as the originals (outputs agree to about 1e-5; the detector's cut-outs overlap 98.8% on average, and on 33 held-out test cars the old and new pipelines pick the same make and model in 30 of 33 cases and are right about equally often).
+- **`dashboard/detector.py`** is YOLO's pre- and post-processing (letterbox, NMS, mask assembly) in NumPy and OpenCV.
+- **Weights from the Hugging Face Hub.** The ONNX files (about 165 MB) are in [`Hugomnc/car-spotter-models`](https://huggingface.co/Hugomnc/car-spotter-models) and download on first use. A local `models_onnx/` folder is used instead when it exists.
+- **`app_data/`** holds the small result files the other pages read (7 MB), made by `scripts/make_app_data.py`, because `models/` and `data/` are far too big to host.
+- `requirements.txt` is the hosted app; `requirements-train.txt` is the training and conversion environment.

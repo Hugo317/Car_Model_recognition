@@ -1,3 +1,6 @@
+import json
+
+import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -24,6 +27,11 @@ ALL_ANGLES_FUNNEL = [  # car_model_predictor.ipynb
 
 @st.cache_data
 def photo_counts(modified):
+    summary = MODELS_DIR / "features" / "photo_summary.json"
+    if not (MODELS_DIR / "features" / "photo_index.csv").exists() and summary.exists():   # the hosted app: counts saved by scripts/make_app_data.py
+        s = json.loads(summary.read_text())
+        return (pd.DataFrame(s["per_brand"]).set_index("brand"), pd.Series({int(k): v for k, v in s["per_angle"].items()}).sort_index(),
+                pd.Series(s["per_split"]), pd.DataFrame(s["example"]))
     photos = load(MODELS_DIR / "features" / "photo_index.csv", "car_model_predictor.ipynb",
                   usecols=["path", "brand", "model", "angle", "advert_id", "split"])
     per_brand = photos.groupby("brand").agg(photos=("path", "size"), models=("model", "nunique")).sort_values("photos")
