@@ -2,6 +2,8 @@
 
 Don't know what you're driving? Upload a few photos of a car and this project tells you its make and model: the make from a photo of the front, the model from photos taken at any angle. It's trained on 1.35 million photos from UK car adverts and runs as a small Streamlit app.
 
+**Live demo:** [car-spotter.streamlit.app](https://car-spotter.streamlit.app). The first photo you identify takes about a minute while the models load.
+
 ![Home page](docs/screenshots/home.png)
 
 ## How it works
